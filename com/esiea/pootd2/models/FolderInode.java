@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FolderInode extends Inode {
-    List<Inode> children;
+    public List<Inode> children;
 
     //Le constructeur permet d'initialiser la taille d'un dossier ainsi que la liste des ses enfants
     public FolderInode(String name) {
