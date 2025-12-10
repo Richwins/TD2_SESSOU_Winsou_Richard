@@ -11,6 +11,10 @@ public abstract class Inode {
     public FolderInode getParent() {
         return parent;
     }
+    
+    public void setParent(FolderInode parent) {
+        this.parent = parent;
+    }
 
     public String getName() {
         return name;

@@ -1,26 +1,34 @@
 package com.esiea.pootd2.interfaces;
-import com.esiea.pootd2.controllers.ExplorerController;
-import com.esiea.pootd2.interfaces.IUserInterface;
+import com.esiea.pootd2.controllers.IExplorerController;
 
 import java.util.Scanner;
 
 public class TextInterface implements IUserInterface{
 
-    private ExplorerController explorerController;
+    private IExplorerController explorerController;
+    
+    public TextInterface(IExplorerController explorerController) {
+        this.explorerController = explorerController;
+    }
+
     @Override
     public void run() {
-        System.out.print('>');
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        if (input.equals("exit")) {
-            return;
+        try (Scanner sc = new Scanner(System.in)) {
+            String input;
+            
+            while(true){
+                System.out.print('>');
+                input = sc.nextLine();
+                
+                if (input.equals("exit")) {
+                    break;
+                }
+                
+                String result = explorerController.executeCommand(input);
+                if (!result.isEmpty()) {
+                    System.out.println(result);
+                }
+            }
         }
-        while(!input.equals("exit")){
-            explorerController.executeCommand(input);
-            System.out.print('>');
-            input = sc.nextLine();
-        }
-        System.out.println("Session fermée !");
-        System.exit(0);
     }
 }
