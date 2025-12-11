@@ -138,7 +138,6 @@ image.png
 fenouil 66217
 > exit
 
-
 ```
 
 ## Patterns de Conception Utilisés
