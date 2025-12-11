@@ -126,19 +126,27 @@ L'application supporte les commandes suivantes :
 
 ### Exemple d'utilisation
 
-image.png
+#### Interface Terminal
+
+![Exemple d'utilisation de l'explorateur de fichiers en mode terminal](image.png)
 
 ```
 > ls
-> mkdir fenouil
-> cd fenouil
+> mkdir dossier1
+> cd dossier1
 > touch image.png
 > cd ..
 > ls
-fenouil 66217
+dossier 66217
 > exit
 
 ```
+
+#### Interface Web
+
+![Exemple d'utilisation de l'explorateur de fichiers en mode web](imagewebinterface.png)
+
+L'interface web est accessible à l'adresse `http://localhost:8001` après avoir sélectionné l'option `http` au démarrage de l'application.
 
 ## Patterns de Conception Utilisés
 

@@ -16,11 +16,11 @@ public class FolderInode extends Inode {
     public void addInode(Inode inode){
         children.add(inode);
 
-        System.out.println(" Liste des enfant après l'ajout du fichier/dossier dans " + getName());
+     /*    System.out.println(" Liste des enfant après l'ajout du fichier/dossier dans " + getName());
         for (Inode child : children) {
             System.out.println(child.getName());
         }
-        System.out.println('\n');
+        System.out.println('\n');*/
     }
 
     @Override
