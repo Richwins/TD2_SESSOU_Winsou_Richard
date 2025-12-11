@@ -1,5 +1,6 @@
 package com.esiea.pootd2.commands;
 
+//Gérer les erreurs de commands
 public class ErrorCommand extends Command{
     private String errorMessage;
     
