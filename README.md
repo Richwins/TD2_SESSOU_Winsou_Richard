@@ -94,6 +94,10 @@ Gère l'interaction avec l'utilisateur :
   - Affiche les résultats
   - S'arrête quand l'utilisateur tape `"exit"`
 
+## Diagramme de Classe
+
+Un diagramme de classe UML représentant l'architecture complète du projet est disponible dans le fichier `TD2_diagramme.drawio.svg`. Ce diagramme a été créé avec [draw.io](https://app.diagrams.net/) et illustre les relations entre les différentes classes, interfaces et leurs méthodes.
+
 ## Compilation et Exécution
 
 ### Compilation
@@ -122,6 +126,8 @@ L'application supporte les commandes suivantes :
 
 ### Exemple d'utilisation
 
+image.png
+
 ```
 > ls
 > mkdir fenouil
@@ -131,6 +137,8 @@ L'application supporte les commandes suivantes :
 > ls
 fenouil 66217
 > exit
+
+
 ```
 
 ## Patterns de Conception Utilisés
