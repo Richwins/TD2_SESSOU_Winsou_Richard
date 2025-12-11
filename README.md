@@ -3,7 +3,7 @@
 ## Etudiant : SESSOU Winsou Richard
 ## Description
 
-Ce projet implémente un explorateur de fichiers en ligne de commande similaire à un terminal Unix. L'application permet de naviguer dans une arborescence de fichiers et de dossiers, de créer des fichiers et des dossiers, et de lister le contenu des répertoires.
+Ce projet implémente un explorateur de fichiers en ligne de commande similaire à un terminal Unix. L'application permet de naviguer dans une arborescence de fichiers et de dossiers, de créer des fichiers et des dossiers, et de lister le contenu des répertoires. L'application propose deux interfaces utilisateur : une interface terminal classique et une interface web accessible via un navigateur.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ com.esiea.pootd2/
 ├── commands/        # Commandes (Command, ListCommand, etc.)
 │   └── parsers/    # Parseurs de commandes
 ├── controllers/     # Contrôleurs (ExplorerController)
-└── interfaces/     # Interfaces utilisateur (TextInterface)
+└── interfaces/     # Interfaces utilisateur (TextInterface, HttpInterface)
 ```
 
 ### Structure des Packages
@@ -94,6 +94,17 @@ Gère l'interaction avec l'utilisateur :
   - Affiche les résultats
   - S'arrête quand l'utilisateur tape `"exit"`
 
+- **`HttpInterface`** : Implémentation de l'interface utilisateur en mode web
+  - Prend un `IExplorerController` en paramètre dans le constructeur
+  - Démarre un serveur HTTP sur le port 8001
+  - Fournit une interface web accessible via navigateur
+  - Gère les requêtes GET (affichage de l'interface) et POST (exécution des commandes)
+  - S'arrête quand l'utilisateur tape `"exit"` dans l'interface web
+
+- **`AbstractInterface`** : Classe abstraite de base pour les interfaces
+  - Contient le contrôleur commun à toutes les interfaces
+  - Implémente `IUserInterface`
+
 ## Diagramme de Classe
 
 Un diagramme de classe UML représentant l'architecture complète du projet est disponible dans le fichier `TD2_diagramme.drawio.svg`. Ce diagramme a été créé avec [draw.io](https://app.diagrams.net/) et illustre les relations entre les différentes classes, interfaces et leurs méthodes.
@@ -111,6 +122,64 @@ javac -d out/production/TD2 com/esiea/pootd2/**/*.java
 ```bash
 java -cp out/production/TD2 com.esiea.pootd2.ExplorerApp
 ```
+
+## Utilisation de l'Application
+
+### Démarrage
+
+Lors du lancement de l'application, un menu interactif s'affiche dans la console vous permettant de choisir le type d'interface :
+
+```
+Choisissez l'interface utilisateur :
+  1. text - Interface terminal
+  2. http - Interface web (http://localhost:8001)
+Votre choix (text/http) : 
+```
+
+Vous pouvez saisir :
+- `text` ou `1` pour utiliser l'interface terminal
+- `http` ou `2` pour utiliser l'interface web
+
+### Interface Terminal
+
+L'interface terminal fonctionne directement dans votre console. Après avoir sélectionné l'option `text`, vous pouvez commencer à saisir des commandes immédiatement.
+
+**Caractéristiques :**
+- Affichage en temps réel dans la console
+- Prompt `>` pour indiquer qu'une commande peut être saisie
+- Résultats affichés directement sous chaque commande
+- Tapez `exit` pour quitter l'application
+
+**Exemple d'utilisation :**
+```
+> ls
+> mkdir monDossier
+> cd monDossier
+> touch fichier.txt
+> ls
+fichier.txt 54321
+> exit
+```
+
+### Interface Web
+
+L'interface web permet d'utiliser l'explorateur de fichiers via un navigateur web. Après avoir sélectionné l'option `http`, un serveur HTTP démarre automatiquement.
+
+**Caractéristiques :**
+- Accessible à l'adresse `http://localhost:8001`
+- Interface graphique similaire à un terminal dans le navigateur
+- Fond sombre avec texte blanc pour une meilleure lisibilité
+- Les commandes sont envoyées via des requêtes HTTP POST
+- Tapez `exit` dans l'interface web pour fermer le serveur
+
+**Étapes d'utilisation :**
+1. Sélectionnez l'option `http` au démarrage
+2. Ouvrez votre navigateur web
+3. Accédez à `http://localhost:8001`
+4. Utilisez l'interface comme un terminal classique
+5. Tapez `exit` pour arrêter le serveur
+
+**Note :** Le serveur reste actif tant que vous n'avez pas tapé `exit`. Vous pouvez fermer l'onglet du navigateur sans arrêter le serveur, mais vous devrez taper `exit` dans l'interface pour arrêter proprement le serveur.
 
 ## Commandes Disponibles
 
@@ -176,7 +245,9 @@ Les méthodes `doCommand()` sont surchargées pour chaque type de Command, perme
 ✅ Liste du contenu des répertoires avec tailles  
 ✅ Gestion des erreurs (fichier/dossier existant, chemin invalide, etc.)  
 ✅ Support des chemins relatifs (`..`, `/`)  
-✅ Interface en ligne de commande interactive  
+✅ Interface terminal interactive en ligne de commande  
+✅ Interface web accessible via navigateur (http://localhost:8001)  
+✅ Menu de sélection d'interface au démarrage  
 
 ## Gestion des Erreurs
 
