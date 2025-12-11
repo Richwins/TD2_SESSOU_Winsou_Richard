@@ -105,24 +105,6 @@ Gère l'interaction avec l'utilisateur :
   - Contient le contrôleur commun à toutes les interfaces
   - Implémente `IUserInterface`
 
-## Diagramme de Classe
-
-Un diagramme de classe UML représentant l'architecture complète du projet est disponible dans le fichier `TD2_diagramme.drawio.svg`. Ce diagramme a été créé avec [draw.io](https://app.diagrams.net/) et illustre les relations entre les différentes classes, interfaces et leurs méthodes.
-
-## Compilation et Exécution
-
-### Compilation
-
-```bash
-javac -d out/production/TD2 com/esiea/pootd2/**/*.java
-```
-
-### Exécution
-
-```bash
-java -cp out/production/TD2 com.esiea.pootd2.ExplorerApp
-```
-
 ## Utilisation de l'Application
 
 ### Démarrage
@@ -259,6 +241,24 @@ L'application gère plusieurs types d'erreurs :
 - Erreurs de parsing
 
 Toutes les erreurs sont retournées via des `ErrorCommand` avec des messages explicites.
+
+## Diagramme de Classe
+
+Un diagramme de classe UML représentant l'architecture complète du projet est disponible dans le fichier `TD2_diagramme.drawio.svg`. Ce diagramme a été créé avec [draw.io](https://app.diagrams.net/) et illustre les relations entre les différentes classes, interfaces et leurs méthodes.
+
+## Compilation et Exécution
+
+### Compilation
+
+```bash
+javac -d out/production/TD2 com/esiea/pootd2/**/*.java
+```
+
+### Exécution
+
+```bash
+java -cp out/production/TD2 com.esiea.pootd2.ExplorerApp
+```
 
 ## Auteur
 
